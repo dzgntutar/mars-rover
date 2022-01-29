@@ -20,7 +20,7 @@ namespace MarsRover.Models.Directions.Concrete
 
         public void MoveForward()
         {
-            _coordinates.X -= -1;
+            _coordinates.X -= 1;
         }
 
         public IRoverState TurnLeft()
@@ -31,6 +31,10 @@ namespace MarsRover.Models.Directions.Concrete
         public IRoverState TurnRight()
         {
             return new NorthDirection(_coordinates);
+        }
+        public string GetDirection()
+        {
+            return "W";
         }
     }
 }

@@ -31,5 +31,10 @@ namespace MarsRover.Models.Directions.Concrete
         {
             return new EastDirection(_coordinates);
         }
+
+        public string GetDirection()
+        {
+            return "N";
+        }
     }
 }

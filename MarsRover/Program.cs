@@ -7,28 +7,27 @@ Console.WriteLine("Keşif başlıyor..\n");
 
 await Task.Delay(1500);
 
-Console.WriteLine("Alanın X boyutunu giriniz..\n");
-string xSize = Console.ReadLine() ?? "";
+Console.WriteLine("Alanın boyutlarını giriniz..\n");
+string size = Console.ReadLine() ?? String.Empty;
 
-Console.WriteLine("Alanın Y boyutunu giriniz..\n");
-string ySize = Console.ReadLine() ?? "";
+var sizeArray = size.Trim().Split(' ');
+int xSize = Convert.ToInt32(sizeArray[0]);
+int ySize = Convert.ToInt32(sizeArray[1]);
 
-Console.WriteLine("Robotun X konumu..\n");
-string x = Console.ReadLine() ?? "";
+Console.WriteLine("Robotun  konumunu giriniz..\n");
+var directionInput = Console.ReadLine() ?? String.Empty;
 
-Console.WriteLine("Robotun Y konumu..\n");
-string y = Console.ReadLine() ?? "";
-
-Console.WriteLine("Robotun yönü..\n");
-string direction = Console.ReadLine() ?? "";
-
+var directionArray = directionInput.Trim().Split(' ');
+int x = Convert.ToInt32(directionArray[0]);
+int y = Convert.ToInt32(directionArray[1]);
+string direction = directionArray[2];
 
 var coordinate = new Coordinate
 {
-    X = Convert.ToInt32(x),
-    Y = Convert.ToInt32(y),
-    SizeX = Convert.ToInt32(xSize),
-    SizeY = Convert.ToInt32(ySize)
+    X = x,
+    Y = y,
+    SizeX = xSize,
+    SizeY = ySize
 };
 
 IRoverState state;
@@ -55,7 +54,7 @@ switch (direction.ToUpper())
         break;
 }
 
-Console.WriteLine("Komutları göndermeya başla..\n");
+Console.WriteLine("Gitmeye hazırız..\n");
 
 string input = "";
 while (true)
@@ -78,6 +77,6 @@ while (true)
         rover?.Forward();
     }
 
-    Console.WriteLine($"x : {rover?.state._coordinates.X} Y : {rover?.state._coordinates.Y}");
+    Console.WriteLine($"x : {rover?.state._coordinates.X} Y : {rover?.state._coordinates.Y} Direction : {rover?.state.GetDirection()}");
 }
 

@@ -13,5 +13,6 @@ namespace MarsRover.Models.Directions.Abstract
         void MoveForward();
         IRoverState TurnLeft();
         IRoverState TurnRight();
+        string GetDirection();
     }
 }
