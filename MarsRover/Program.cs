@@ -7,32 +7,49 @@ Console.WriteLine("Keşif başlıyor..\n");
 await Task.Delay(1500);
 
 // Grid Size 
-Console.WriteLine("Alanın boyutlarını giriniz..\n");
+Console.WriteLine("Enter plateau size..\n");
 string size = Console.ReadLine() ?? String.Empty;
 
 var sizeArray = size.Trim().Split(' ');
-int xSize = Convert.ToInt32(sizeArray[0]);
-int ySize = Convert.ToInt32(sizeArray[1]);
+int xSize, ySize;
 
+//validation
+if (sizeArray.Length != 2 || !(int.TryParse(sizeArray[0], out xSize) && int.TryParse(sizeArray[1], out ySize)))
+{
+    Console.WriteLine("Wrong format");
+    Console.WriteLine("Correct format is like 5 5");
+    Console.ReadLine();
+    return;
+}
 
 var roverTaskList = new List<RoverModel>();
-int x = 0;
-int y = 0;
+int x, y = 0;
 string direction = "";
 
 for (int i = 0; i < 2; i++)
 {
     //Rover Input
-    Console.WriteLine($"{i + 1}. Robotun konumunu giriniz..\n");
+    Console.WriteLine("*****************************************************************");
+    Console.WriteLine($"Enter {i + 1}. rover's coordinate..\n");
     var directionInput = Console.ReadLine() ?? String.Empty;
 
     var directionArray = directionInput.Trim().Split(' ');
+
+    //validation
+    if (directionArray.Length != 3 || !(int.TryParse(directionArray[0], out x) && int.TryParse(directionArray[0], out y)))
+    {
+        Console.WriteLine("Wrong format");
+        Console.WriteLine("Correct format is like 1 2 N");
+        Console.ReadLine();
+        return;
+    }
+
     x = Convert.ToInt32(directionArray[0]);
     y = Convert.ToInt32(directionArray[1]);
     direction = directionArray[2];
 
 
-    Console.WriteLine($"{i + 1}. Robotun görevini giriniz..\n");
+    Console.WriteLine($"Enter {i + 1}. rover's task..\n");
     var roverTask = Console.ReadLine() ?? String.Empty;
 
     roverTaskList.Add(new RoverModel
@@ -81,8 +98,6 @@ for (int i = 0; i < roverTaskList.Count; i++)
             break;
     }
 
-    Console.WriteLine($"{i + 1}. robot gitmeye hazır..\n");
-
     foreach (char c in roverTaskList[i].RoverTask)
     {
         if (c.ToString().ToUpper() == "N")
@@ -101,15 +116,7 @@ for (int i = 0; i < roverTaskList.Count; i++)
         }
     }
 
-    Console.WriteLine($"Son Konum {rover?.state._coordinates.X} {rover?.state._coordinates.Y} {rover?.state.GetDirection()}");
-
+    Console.WriteLine($"{rover?.state._coordinates.X} {rover?.state._coordinates.Y} {rover?.state.GetDirection()}");
 }
 
 Console.ReadKey();
-
-
-
-
-
-
-
