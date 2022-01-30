@@ -2,7 +2,7 @@
 using MarsRover.Directions.Abstract;
 using MarsRover.Directions.Concrete;
 
-Console.WriteLine("Keşif başlıyor..\n");
+Console.WriteLine("Discovery begins..\n");
 
 await Task.Delay(1500);
 
