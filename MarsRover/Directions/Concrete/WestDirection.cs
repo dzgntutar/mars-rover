@@ -1,12 +1,11 @@
-﻿using MarsRover.Models;
-using MarsRover.Models.Directions.Abstract;
+﻿using MarsRover.Directions.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsRover.Models.Directions.Concrete
+namespace MarsRover.Directions.Concrete
 {
     //Batı
     internal class WestDirection : IRoverState

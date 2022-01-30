@@ -1,11 +1,11 @@
-﻿using MarsRover.Models.Directions.Abstract;
+﻿using MarsRover.Directions.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsRover.Models
+namespace MarsRover
 {
     internal class Rover
     {
