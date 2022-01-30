@@ -20,7 +20,10 @@ namespace MarsRover.Models.Directions.Concrete
 
         public void MoveForward()
         {
-            _coordinates.X += 1;
+            if (_coordinates.X < _coordinates.SizeX)
+                _coordinates.X += 1;
+            else
+                Console.WriteLine($"Sınır aşıldı. İleri gidilemiyor!! Max X : {_coordinates.SizeX}");
         }
 
         public IRoverState TurnLeft()

@@ -70,7 +70,6 @@ while (true)
     else if (input?.ToString().ToUpper() == "R")
     {
         rover?.TurnRight();
-
     }
     else if (input?.ToString().ToUpper() == "M")
     {
@@ -79,4 +78,6 @@ while (true)
 
     Console.WriteLine($"x : {rover?.state._coordinates.X} Y : {rover?.state._coordinates.Y} Direction : {rover?.state.GetDirection()}");
 }
+
+Console.WriteLine($"x : {rover?.state._coordinates.X} Y : {rover?.state._coordinates.Y} Direction : {rover?.state.GetDirection()}");
 
